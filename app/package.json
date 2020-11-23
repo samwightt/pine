@@ -8,8 +8,8 @@
     "test": "web-test-runner \"src/**/*.test.tsx\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
-    "relay": "relay-compiler --src ./src --schema schema.graphql --language typescript --artifactDirectory ./src/__generated__",
-    "relay:watch": "relay-compiler --src ./src --schema schema.graphql --language typescript --artifactDirectory ./src/__generated__ --watch",
+    "relay": "relay-compiler --src ./src --schema ../schema.graphql --language typescript --artifactDirectory ./src/__generated__",
+    "relay:watch": "relay-compiler --src ./src --schema ../schema.graphql --language typescript --artifactDirectory ./src/__generated__ --watch",
     "plop": "plop",
     "server": "ts-node-dev ./server/index.ts"
   },

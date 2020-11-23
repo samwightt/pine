@@ -1,0 +1,14 @@
+interface Node {
+  id: ID!
+}
+
+type Query {
+  node(id: ID!): Node
+  books: [Book]
+}
+
+type Book implements Node {
+  id: ID!
+  title: String
+  author: String
+}
