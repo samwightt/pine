@@ -19,10 +19,16 @@ export type Query = {
   __typename?: 'Query';
   node?: Maybe<Node>;
   books?: Maybe<Array<Maybe<Book>>>;
+  book?: Maybe<Book>;
 };
 
 
 export type QueryNodeArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryBookArgs = {
   id: Scalars['ID'];
 };
 
@@ -137,6 +143,7 @@ export type NodeResolvers<ContextType = any, ParentType extends ResolversParentT
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   node?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType, RequireFields<QueryNodeArgs, 'id'>>;
   books?: Resolver<Maybe<Array<Maybe<ResolversTypes['Book']>>>, ParentType, ContextType>;
+  book?: Resolver<Maybe<ResolversTypes['Book']>, ParentType, ContextType, RequireFields<QueryBookArgs, 'id'>>;
 };
 
 export type BookResolvers<ContextType = any, ParentType extends ResolversParentTypes['Book'] = ResolversParentTypes['Book']> = {

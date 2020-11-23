@@ -5,6 +5,7 @@ interface Node {
 type Query {
   node(id: ID!): Node
   books: [Book]
+  book(id: ID!): Book
 }
 
 type Book implements Node {
