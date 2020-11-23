@@ -6,6 +6,29 @@ module.exports = function (plop) {
       .join("");
   });
 
+  plop.setGenerator("module", {
+    description: "Generate a new module and automatically import it.",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "Enter the module name",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "server/src/modules/{{uppercase name}}.ts",
+        templateFile: "plop-templates/module.hbs",
+      },
+      {
+        type: "append",
+        path: "server/src/modules/index.ts",
+        template: 'export * from "./{{name}}";',
+      },
+    ],
+  });
+
   plop.setGenerator("component", {
     description: "Quickly generate a new React component",
     prompts: [

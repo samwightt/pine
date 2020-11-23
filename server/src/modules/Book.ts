@@ -1,5 +1,5 @@
 import { gql } from "apollo-server";
-import createModule from "../utils/createModule";
+import createModule from "lib/createModule";
 
 const definition = gql`
   type Book implements Node {
@@ -26,7 +26,7 @@ const books = [
   },
 ];
 
-const module = createModule("Book", {
+export const BookModule = createModule("Book", {
   resolvers: {
     Query: {
       books: () => {
@@ -39,5 +39,3 @@ const module = createModule("Book", {
     return books.find((x) => x.id === id);
   },
 });
-
-export default module;

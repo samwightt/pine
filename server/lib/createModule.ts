@@ -1,4 +1,4 @@
-import { Resolvers, ResolversParentTypes, Scalars } from "../generated/graphql";
+import { Resolvers, ResolversParentTypes, Scalars } from "types/graphql";
 import { gql } from "apollo-server";
 
 interface CreateUnitTypeInput<T extends keyof Resolvers> {
@@ -51,7 +51,7 @@ const createModule = <T extends Exclude<keyof Resolvers, "Node" | "Query">>(
   const isID =
     II ||
     ((input) => input.match(new RegExp(`${name.toLowerCase()}:(.+)`)) !== null);
-  return {
+  const toReturn = {
     name,
     resolvers: {
       ...resolvers,
@@ -76,6 +76,8 @@ const createModule = <T extends Exclude<keyof Resolvers, "Node" | "Query">>(
         else return null;
       }),
   };
+
+  return toReturn;
 };
 
 export default createModule;

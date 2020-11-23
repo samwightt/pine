@@ -5,11 +5,16 @@
     "lib": ["es6"],
     "allowJs": true,
     "outDir": "build",
-    "rootDir": "src",
+    "rootDir": "./",
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
+    "incremental": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "lib": ["lib"]
+    }
   }
 }

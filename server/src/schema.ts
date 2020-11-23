@@ -1,7 +1,9 @@
 import { gql, makeExecutableSchema } from "apollo-server";
-import { Resolvers, Node } from "./generated/graphql";
-import Modules from "./types";
+import { Resolvers, Node } from "types/graphql";
 import { merge } from "lodash";
+
+import * as UnformattedModules from "./modules";
+const Modules = Object.values(UnformattedModules);
 
 const typeDefs = gql`
   interface Node {
