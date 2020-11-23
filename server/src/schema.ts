@@ -22,10 +22,19 @@ const nodeResolver: Resolvers = {
         if (Modules[i].isID(args.id)) {
           const id = Modules[i].extractID(args.id);
           if (id) {
-            const result = Modules[i].nodeResolver(id) as Node;
+            const result = Modules[i].nodeResolver(id);
+            if (result && "then" in result) {
+              return result.then((result) => {
+                const newResult = {
+                  ...result,
+                  id: Modules[i].generateId(result as Node),
+                };
+                return newResult;
+              });
+            }
             const newResult = {
               ...result,
-              id: Modules[i].generateId(result),
+              id: Modules[i].generateId(result as Node),
             };
             return newResult;
           }

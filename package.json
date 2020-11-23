@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": [
     "app",
-    "server"
+    "server",
+    "pine"
   ],
   "devDependencies": {
     "plop": "^2.7.4"

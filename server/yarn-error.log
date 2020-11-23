@@ -1,0 +1,66 @@
+Arguments: 
+  /Users/sam/.nvm/versions/node/v12.16.1/bin/node /Users/sam/.nvm/versions/node/v12.16.1/bin/yarn g:client
+
+PATH: 
+  /Users/sam/.rvm/gems/ruby-2.5.8/bin:/Users/sam/.rvm/gems/ruby-2.5.8@global/bin:/Users/sam/.rvm/rubies/ruby-2.5.8/bin:/Users/sam/.nvm/versions/node/v12.16.1/bin:/Users/sam/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Library/Apple/usr/bin:/Users/sam/.rvm/gems/ruby-2.5.8/bin:/Users/sam/.rvm/gems/ruby-2.5.8@global/bin:/Users/sam/.rvm/rubies/ruby-2.5.8/bin:/Users/sam/.cargo/bin:/Users/sam/.composer/vendor/bin:/Users/sam/.local/bin:/Users/sam/.rvm/bin:/Users/sam/.composer/vendor/bin:/Users/sam/.local/bin:/Users/sam/.composer/vendor/bin:/Users/sam/.rvm/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.16.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/sam/Code/framework/server/package.json: Unexpected token k in JSON at position 1
+      at JSON.parse (<anonymous>)
+      at /Users/sam/.nvm/versions/node/v12.16.1/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/sam/.nvm/versions/node/v12.16.1/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/sam/.nvm/versions/node/v12.16.1/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {k
+    "name": "server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "devDependencies": {
+      "@graphql-codegen/cli": "1.19.2",
+      "@graphql-codegen/introspection": "1.18.0",
+      "@graphql-codegen/typescript": "1.17.11",
+      "@graphql-codegen/typescript-resolvers": "1.17.11",
+      "@prisma/cli": "^2.11.0",
+      "@types/node": "^14.14.9",
+      "npm-run-all": "^4.1.5",
+      "tsconfig-paths": "^3.9.0",
+      "typescript": "^4.1.2"
+    },
+    "scripts": {
+      "start": "nodemon",
+      "g:schema": "ts-node --transpile-only -r tsconfig-paths/register ./src/schemaGen.ts",
+      "g:types": "graphql-codegen --config codegen.yml",
+      "g:client": "prisma generate",
+      "start:server": "ts-node -r tsconfig-paths/register ./src/index.ts",
+      "start:all": "run-s g:schema g:types start:server"
+    },
+    "dependencies": {
+      "@prisma/client": "^2.11.0",
+      "@types/graphql": "^14.5.0",
+      "@types/lodash": "^4.14.165",
+      "apollo-server": "^2.19.0",
+      "fs": "^0.0.1-security",
+      "graphql": "^15.4.0",
+      "lodash": "^4.17.20",
+      "nodemon": "^2.0.6",
+      "ts-node": "^9.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

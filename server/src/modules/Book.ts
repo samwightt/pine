@@ -1,5 +1,6 @@
 import { gql } from "apollo-server";
 import createModule from "lib/createModule";
+import db from "prisma";
 
 const definition = gql`
   type Book implements Node {
@@ -13,29 +14,24 @@ const definition = gql`
   }
 `;
 
-const books = [
-  {
-    id: "1",
-    title: "The Awakening",
-    author: "KAte Chopin",
-  },
-  {
-    id: "2",
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
 export const BookModule = createModule("Book", {
   resolvers: {
     Query: {
-      books: () => {
-        return books;
+      books: async () => {
+        return await db.book.findMany({
+          orderBy: {
+            id: "asc",
+          },
+        });
       },
     },
   },
   schema: definition,
-  nodeResolver(id) {
-    return books.find((x) => x.id === id);
+  async nodeResolver(id) {
+    return db.book.findOne({
+      where: {
+        id,
+      },
+    });
   },
 });

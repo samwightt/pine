@@ -5,7 +5,13 @@ interface CreateUnitTypeInput<T extends keyof Resolvers> {
   resolvers: Resolvers;
   schema: ReturnType<typeof gql>;
 
-  nodeResolver: (id: string) => ResolversParentTypes[T] | null | undefined;
+  nodeResolver: (
+    id: string
+  ) =>
+    | ResolversParentTypes[T]
+    | null
+    | undefined
+    | Promise<ResolversParentTypes[T] | null>;
   generateId?: (input: ResolversParentTypes[T]) => Scalars["ID"];
   isID?: (input: Scalars["ID"]) => boolean;
   extractID?: (input: Scalars["ID"]) => string;
@@ -27,7 +33,13 @@ interface CreateModuleReturnType<T extends keyof Resolvers> {
   isID: (input: Scalars["ID"]) => boolean;
   extractID: (input: Scalars["ID"]) => string | null;
 
-  nodeResolver: (id: string) => ResolversParentTypes[T] | null | undefined;
+  nodeResolver: (
+    id: string
+  ) =>
+    | ResolversParentTypes[T]
+    | null
+    | undefined
+    | Promise<ResolversParentTypes[T] | null>;
 }
 
 const createModule = <T extends Exclude<keyof Resolvers, "Node" | "Query">>(

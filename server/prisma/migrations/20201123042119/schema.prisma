@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+model task {
+  id                String    @id @default(dbgenerated())
+  name              String
+  completed         Boolean
+  scheduledFor      DateTime?
+  scheduledPosition Int
+  timeEstimate      Int?
+
+  @@index([scheduledFor, scheduledPosition], name: "IDX_65c8bd1681f20e15e0e130defc")
+}

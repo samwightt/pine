@@ -41,7 +41,7 @@ module.exports = function (plop) {
     actions: [
       {
         type: "add",
-        path: "src/components/{{uppercase name}}.tsx",
+        path: "app/src/components/{{uppercase name}}.tsx",
         templateFile: "plop-templates/component.hbs",
       },
     ],
